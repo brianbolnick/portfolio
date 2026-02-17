@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-muted: var(--accent-muted);
+  --color-border: var(--border-color);
+  --color-card: var(--card);
+}
+
+:root {
+  --surface: #fafaf9;
+  --surface-secondary: #f5f5f4;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-tertiary: #a8a29e;
+  --accent: #5eead4;
+  --accent-deep: #2dd4bf;
+  --accent-muted: rgba(94, 234, 212, 0.15);
+  --border-color: #e7e5e4;
+  --card: #ffffff;
+}
+
+.dark {
+  --surface: #0c0a09;
+  --surface-secondary: #1c1917;
+  --text-primary: #fafaf9;
+  --text-secondary: #a8a29e;
+  --text-tertiary: #78716c;
+  --accent: #5eead4;
+  --accent-deep: #2dd4bf;
+  --accent-muted: rgba(94, 234, 212, 0.08);
+  --border-color: #292524;
+  --card: #1c1917;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #0c0a09;
+}
+
+@keyframes draw-line {
+  from { height: 0; }
+  to { height: 100%; }
+}
