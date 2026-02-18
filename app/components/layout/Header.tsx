@@ -4,10 +4,8 @@ import { ThemeToggle } from "~/components/ui/ThemeToggle";
 import { cn } from "~/lib/cn";
 
 const navLinks = [
-  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Writing", href: "#writing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Thoughts", href: "/thoughts" },
 ];
 
 export function Header() {

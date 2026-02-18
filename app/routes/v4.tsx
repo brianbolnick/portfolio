@@ -1,4 +1,3 @@
-import type { Route } from "./+types/home";
 import { motion } from "framer-motion";
 import { Header } from "~/components/layout/Header";
 import { Footer } from "~/components/layout/Footer";
@@ -7,16 +6,14 @@ import { Section } from "~/components/layout/Section";
 import { TimelineConnectedEntry } from "~/components/experience/TimelineConnected";
 import { experience } from "~/data/experience";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Brian Bolnick | Co-Founder & CPO" },
-    {
-      name: "description",
-      content:
-        "Brian Bolnick — Co-Founder & CPO at Veras. Builder, tinkerer, and engineer turned product leader.",
-    },
-  ];
-}
+/**
+ * V4: Hybrid of V1 (editorial hero + headshot) + V2 (oversized mono typography)
+ * - Big bold "hey, I'm Brian" greeting
+ * - Headshot alongside
+ * - Monospace accents from V2
+ * - Connected timeline with dots, lines, and hover animations
+ * - Extra polish: staggered entrance, subtle floating animation on headshot
+ */
 
 const stagger = {
   hidden: {},
@@ -143,7 +140,7 @@ function ExperienceTimeline() {
   );
 }
 
-export default function Home() {
+export default function V4() {
   return (
     <>
       <Header />

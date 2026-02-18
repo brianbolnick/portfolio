@@ -19,28 +19,28 @@
 
 :root {
   --surface: #fafaf9;
-  --surface-secondary: #f5f5f4;
-  --text-primary: #1c1917;
-  --text-secondary: #57534e;
-  --text-tertiary: #a8a29e;
-  --accent: #5eead4;
-  --accent-deep: #2dd4bf;
-  --accent-muted: rgba(94, 234, 212, 0.15);
-  --border-color: #e7e5e4;
+  --surface-secondary: #f0efed;
+  --text-primary: #0a0a0a;
+  --text-secondary: #3f3f3f;
+  --text-tertiary: #737373;
+  --accent: #14b8a6;
+  --accent-deep: #0d9488;
+  --accent-muted: rgba(20, 184, 166, 0.12);
+  --border-color: #d6d3d1;
   --card: #ffffff;
 }
 
 .dark {
-  --surface: #0c0a09;
-  --surface-secondary: #1c1917;
-  --text-primary: #fafaf9;
-  --text-secondary: #a8a29e;
-  --text-tertiary: #78716c;
-  --accent: #5eead4;
-  --accent-deep: #2dd4bf;
-  --accent-muted: rgba(94, 234, 212, 0.08);
-  --border-color: #292524;
-  --card: #1c1917;
+  --surface: #0a0a0a;
+  --surface-secondary: #171717;
+  --text-primary: #fafafa;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  --accent: #2dd4bf;
+  --accent-deep: #5eead4;
+  --accent-muted: rgba(45, 212, 191, 0.1);
+  --border-color: #262626;
+  --card: #141414;
 }
 
 html {
@@ -55,10 +55,18 @@ html, body {
 
 ::selection {
   background-color: var(--accent);
-  color: #0c0a09;
+  color: #ffffff;
 }
 
 @keyframes draw-line {
   from { height: 0; }
   to { height: 100%; }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
