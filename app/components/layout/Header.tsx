@@ -36,7 +36,7 @@ export function Header() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
             ? "bg-surface/80 backdrop-blur-md border-b border-border"
-            : "bg-transparent"
+            : "bg-transparent",
         )}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -46,9 +46,9 @@ export function Header() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="font-mono font-medium text-accent text-lg tracking-wide hover:tracking-widest transition-all duration-300"
+            className="font-hero font-black text-text-primary text-lg tracking-tight uppercase hover:text-accent transition-colors duration-200"
           >
-            BB
+            BOLNICK
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -75,19 +75,19 @@ export function Header() {
               <span
                 className={cn(
                   "absolute w-5 h-px bg-text-primary transition-all duration-300",
-                  mobileOpen ? "rotate-45" : "-translate-y-1.5"
+                  mobileOpen ? "rotate-45" : "-translate-y-1.5",
                 )}
               />
               <span
                 className={cn(
                   "absolute w-5 h-px bg-text-primary transition-all duration-300",
-                  mobileOpen ? "opacity-0" : "opacity-100"
+                  mobileOpen ? "opacity-0" : "opacity-100",
                 )}
               />
               <span
                 className={cn(
                   "absolute w-5 h-px bg-text-primary transition-all duration-300",
-                  mobileOpen ? "-rotate-45" : "translate-y-1.5"
+                  mobileOpen ? "-rotate-45" : "translate-y-1.5",
                 )}
               />
             </button>

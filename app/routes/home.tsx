@@ -9,7 +9,7 @@ import { experience } from "~/data/experience";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Brian Bolnick | Co-Founder & CPO" },
+    { title: "Portfolio | Bolnick" },
     {
       name: "description",
       content:
@@ -46,19 +46,15 @@ function Hero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display text-6xl md:text-7xl lg:text-[7rem] font-extrabold text-text-primary leading-[0.92] tracking-tight"
+            className="font-hero text-6xl md:text-7xl lg:text-[7rem] font-extrabold text-text-primary leading-[0.92] tracking-tight"
           >
-            hey, I&apos;m{" "}
-            <span className="text-accent">Brian.</span>
+            hey, i&apos;m <span className="text-accent">brian.</span>
           </motion.h1>
 
-          <motion.p
-            variants={fadeUp}
-            className="text-xl text-text-secondary"
-          >
-            Currently Chief Product Officer &amp; Co-Founder at{" "}
+          <motion.p variants={fadeUp} className="text-xl text-text-secondary">
+            Currently: building product at{" "}
             <a
-              href="https://verasai.com"
+              href="https://veras.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent font-semibold hover:text-accent-deep transition-colors"
@@ -71,10 +67,9 @@ function Hero() {
             variants={fadeUp}
             className="text-lg text-text-secondary max-w-xl leading-relaxed"
           >
-            New York to Colorado to Utah. Product and experience obsessed with a
-            passion for building things that make people happy and their lives
-            easier. Big hockey guy, avid foodie, and forever chasing the next
-            great taco.
+            Product and experience obsessed builder with a passion for making
+            things that make people happy and their lives easier. Big hockey
+            guy, avid foodie. New York &rarr; Colorado &rarr; Utah (since '07).
           </motion.p>
 
           <motion.a

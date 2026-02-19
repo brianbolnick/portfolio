@@ -48,7 +48,7 @@ export function CompanyLogo({ entry, size = "sm" }: CompanyLogoProps) {
             "object-contain",
             isLg ? "w-2/3 max-h-[55%]" : "w-3/5 max-h-[60%]"
           )}
-          style={{ filter: "brightness(0) invert(1)" }}
+          style={entry.logoNaturalColors ? undefined : { filter: "brightness(0) invert(1)" }}
         />
       </div>
     );

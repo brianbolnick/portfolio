@@ -21,7 +21,7 @@ const socialItemVariants = {
 
 export function Footer() {
   return (
-    <footer className="bg-surface-secondary py-20 px-6">
+    <footer className="bg-surface-secondary pt-20 px-6 pb-0 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center">
         <motion.div
           variants={socialVariants}
@@ -54,6 +54,26 @@ export function Footer() {
         <p className="mt-8 text-xs text-text-tertiary font-mono">
           &copy; {new Date().getFullYear()} Brian Bolnick
         </p>
+      </div>
+
+      {/* Giant oversized name */}
+      <div className="mt-16 select-none" aria-hidden="true">
+        <div className="flex justify-center translate-y-[35%]">
+          {"BOLNICK".split("").map((letter, i) => (
+            <motion.span
+              key={i}
+              className="font-hero text-[18vw] font-black leading-none text-text-tertiary/20 cursor-default inline-block"
+              whileHover={{
+                y: -10,
+                scale: 1.05,
+                color: "var(--accent)",
+                transition: { type: "spring", stiffness: 400, damping: 15 },
+              }}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </div>
       </div>
     </footer>
   );

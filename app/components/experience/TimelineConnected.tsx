@@ -53,7 +53,9 @@ export function TimelineConnectedEntry({ entry, index, total }: Props) {
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="w-full md:w-1/2 flex justify-center"
         >
-          <CompanyLogo entry={entry} size="lg" />
+          <a href={entry.url} target="_blank" rel="noopener noreferrer" className="block w-full">
+            <CompanyLogo entry={entry} size="lg" />
+          </a>
         </motion.div>
 
         {/* Card */}

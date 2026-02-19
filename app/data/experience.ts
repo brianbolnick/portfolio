@@ -12,6 +12,7 @@ export interface ExperienceEntry {
   color: string;
   logo?: string;
   logoType?: "svg" | "image";
+  logoNaturalColors?: boolean;
   roles: Role[];
   slug: string;
 }
@@ -22,7 +23,7 @@ export const experience: ExperienceEntry[] = [
     companyShort: "Veras",
     description:
       "Workforce management platform for senior living and healthcare — scheduling, time & attendance, and a full HRIS vision.",
-    url: "https://verasai.com",
+    url: "https://veras.com",
     color: "#000000",
     logo: "/logos/veras-wordmark-white.svg",
     logoType: "svg",
@@ -108,6 +109,7 @@ export const experience: ExperienceEntry[] = [
     color: "#111922",
     logo: "/logos/instructure-logo.svg",
     logoType: "svg",
+    logoNaturalColors: true,
     slug: "instructure",
     roles: [
       {
@@ -138,8 +140,18 @@ export function formatDate(dateStr: string): string {
   if (dateStr === "Present") return "Present";
   const [year, month] = dateStr.split("-");
   const months = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
   return `${months[parseInt(month) - 1]} ${year}`;
 }
