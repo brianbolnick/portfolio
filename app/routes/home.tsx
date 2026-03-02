@@ -46,7 +46,7 @@ function Hero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-hero text-6xl md:text-7xl lg:text-[7rem] font-extrabold text-text-primary leading-[0.92] tracking-tight"
+            className="font-hero text-6xl md:text-7xl lg:text-[7rem] font-black text-text-primary leading-[0.92] tracking-tight"
           >
             hey, i&apos;m <span className="text-accent">brian.</span>
           </motion.h1>

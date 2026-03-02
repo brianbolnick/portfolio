@@ -1,16 +1,34 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "~/components/ui/ThemeToggle";
 import { cn } from "~/lib/cn";
 
 const navLinks = [
-  { label: "Experience", href: "#experience" },
+  { label: "Experience", href: "/#experience" },
   { label: "Thoughts", href: "/thoughts" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (
+    e: React.MouseEvent,
+    href: string,
+  ) => {
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const hash = href.slice(1);
+      if (location.pathname === "/") {
+        document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/" + hash);
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -40,22 +58,19 @@ export function Header() {
         )}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+          <Link
+            to="/"
             className="font-hero font-black text-text-primary text-lg tracking-tight uppercase hover:text-accent transition-colors duration-200"
           >
             BOLNICK
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="relative text-sm text-text-secondary hover:text-text-primary transition-colors duration-200 group"
               >
                 {link.label}
@@ -109,7 +124,10 @@ export function Header() {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href);
+                    setMobileOpen(false);
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.08 }}

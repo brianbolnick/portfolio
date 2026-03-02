@@ -1,0 +1,66 @@
+---
+title: We're Trying to Build a Brain for Our Company
+date: 2026-02-19
+---
+
+I keep having the same problem. Someone on the team asks me why we made a decision three months ago and I have to dig through Slack threads, meeting notes, and my own memory to reconstruct the answer. Half the time I can't even find it. The decision made sense at the time — I just can't remember the reasoning anymore because it happened in a conversation that nobody wrote down.
+
+We're 17 people. That should be small enough that everyone knows everything. And for a while it was. But we've crossed some invisible threshold where context stops flowing through osmosis and starts getting stuck in people's heads. Engineers pick up tickets without knowing why the customer needs the feature. Designers build screens without context from the sales call that prompted them. New hires spend weeks just figuring out how we got here.
+
+Tyler and I are the worst bottleneck. Not because we want to be — because most of the company's institutional knowledge happens to live in our heads. Every "quick question" Slack DM is a symptom of a system that doesn't have a better answer.
+
+## What we're trying
+
+We started building something a few weeks ago. I don't have a great name for it yet. The basic idea is: what if we could capture all the knowledge that's already flowing through the company — meetings, Slack, email, code reviews, support tickets, CRM updates — and turn it into something searchable and useful? Without asking anyone to change how they work.
+
+The analogy I keep going back to is charting in healthcare. We work in senior living, so this is close to home. Nurses and doctors chart everything — not because they love paperwork, but because the next person who walks into that room needs to know what happened. It's a handoff system. We're trying to build the same thing for a startup, except the charting happens automatically from what people are already doing.
+
+It might not work. But the problem is real enough that we have to try something.
+
+## How we're thinking about it
+
+The system pulls from basically every tool we use — Slack, Gmail, Google Calendar, Circleback and Granola for meeting transcripts, Linear, HubSpot, Intercom, GitHub, Figma, Sentry. Twelve tools total. The idea is that if you're already having the conversation or writing the code or logging the ticket, the knowledge gets captured without you doing anything extra.
+
+Capturing everything is the easy part. The hard part is making it useful. A raw meeting transcript is not knowledge — it's 45 minutes of people talking. You need to pull out the actual decisions, the customer preferences, the action items, and put them somewhere organized. That "somewhere" is what we're calling the knowledge hub — a bunch of markdown files, version-controlled, organized by customer, product, and function. Every claim links back to its source so you can verify it.
+
+The consumption side is where it gets interesting. The vision is that an engineer picks up a ticket and says "what do I need to know?" and gets the customer context, the design specs, the architecture decisions, and the relevant Slack threads — without pinging anyone. A salesperson says "prep me for my call with Vetter" and gets a real briefing. A new hire asks a question on day one and actually gets an answer.
+
+For the daily workflow, we're experimenting with a simple Slack-based rhythm. Send "EOD" at the end of the day, get two summaries — a private one that's basically your journal, and a team version you can review and approve before it's shared. Send "SOD" in the morning, get a briefing on what happened overnight. Five minutes a day, tops, in a tool that's already open.
+
+## The privacy thing matters a lot
+
+One decision we made early that I think is really important: everything starts private. Your notes, your rough thinking, your 1:1 prep — that's yours. The system might suggest promoting something to the shared knowledge base, but nothing crosses that line without your say-so.
+
+This isn't just a nice-to-have. If people think their unfiltered thoughts might end up in a team summary, they stop being honest. And then the most valuable input — real context from the people closest to the work — dries up. So we have a hard rule: private stays private unless you explicitly share it.
+
+## What's working, what's not
+
+We've been testing this mostly on ourselves. Here's the honest version.
+
+The capture pipeline is solid. Pulling from all those tools, getting the data in — that part works. Slack is the noisiest source by far. You can't just throw every message at an AI and expect useful output. What you filter out matters as much as what you keep.
+
+The curation piece — actually extracting the right stuff from raw transcripts and conversations — is where we're spending most of our time. We're using specialized agents for different source types instead of one agent that tries to do everything. One for Slack, one for meeting transcripts, one for routing content to the right place. Turns out bounded agents with specific jobs work way better than a generalist.
+
+The EOD trigger thing isn't sticking. If it requires me to remember to type something at the end of the day, I forget half the time. We need to automate that. Discipline is not a scalable system.
+
+The other thing we're learning is that different people want very different levels of engagement. Some people want the full setup — standing instructions, custom briefings, draft actions. Others just want to ask a question and get an answer. Both are legit. You have to build for both or you lose one group.
+
+## Big open questions
+
+There's a lot we haven't figured out yet.
+
+Right now the knowledge hub is on one machine. That obviously doesn't scale. We need a central server so anyone on the team can access it — through Slack, through Claude, wherever. That's the next infrastructure push.
+
+We haven't solved the HIPAA question either. We're in healthcare. Customer calls sometimes include patient information. Do we strip it out during extraction or store it securely with access controls? Both have tradeoffs.
+
+Work routing is still mostly manual. When the system surfaces action items, someone (usually me) decides where they go. The goal is to automate that classification but we're nowhere close.
+
+And the irony isn't lost on me — this whole thing exists to reduce knowledge concentration in a few people's heads, but the system itself currently depends on a few people to run. Figuring out how to distribute ownership is probably the hardest problem we'll face.
+
+## Why we're bothering
+
+The bet is simple. Every person we add to the team should make the whole company smarter. In practice, every hire also fragments the context a little more. More people means more meetings, more Slack channels, more surface area for decisions to get lost.
+
+We think there's a version where that compounds in the other direction — where the knowledge builds on itself instead of decaying, where "why did we do it this way?" always has an answer, where new people get up to speed in days instead of months.
+
+That's the theory anyway. We'll see. I'll write more about what we learn.

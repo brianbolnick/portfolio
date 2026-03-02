@@ -1,8 +1,55 @@
+import { motion } from "framer-motion";
+import { useLoaderData } from "react-router";
 import { Header } from "~/components/layout/Header";
 import { Footer } from "~/components/layout/Footer";
-import { motion } from "framer-motion";
+import { ArticleCard } from "~/components/writing/ArticleCard";
+import {
+  getPublishedArticles as getStaticArticles,
+  type ArticleMeta,
+} from "~/data/articles";
+import { getPublishedArticles as getDBArticles } from "~/server/db.server";
+import type { Route } from "./+types/thoughts";
+
+export async function loader({}: Route.LoaderArgs) {
+  const staticArticles = getStaticArticles().map((a) => a.meta);
+
+  let dbArticles: ArticleMeta[] = [];
+  try {
+    const rows = await getDBArticles();
+    dbArticles = rows.map((row) => ({
+      title: row.title,
+      slug: row.slug,
+      date: new Date(row.created_at).toISOString().split("T")[0],
+      description: row.description,
+      tags: row.tags,
+      published: true,
+      readingTime: row.reading_time ?? undefined,
+      source: "db" as const,
+    }));
+  } catch {
+    // DB not available — fall back to static only
+  }
+
+  // Merge, deduplicate by slug (DB wins)
+  const slugs = new Set(dbArticles.map((a) => a.slug));
+  const merged = [
+    ...dbArticles,
+    ...staticArticles.filter((a) => !slugs.has(a.slug)),
+  ];
+
+  return { articles: merged };
+}
+
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
 
 export default function Thoughts() {
+  const { articles } = useLoaderData<typeof loader>();
+
   return (
     <>
       <Header />
@@ -30,16 +77,29 @@ export default function Thoughts() {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="border border-border rounded-xl p-12 text-center"
-          >
-            <p className="text-text-tertiary text-lg font-mono">
-              Coming soon.
-            </p>
-          </motion.div>
+          {articles.length > 0 ? (
+            <motion.div
+              variants={listVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid gap-6"
+            >
+              {articles.map((article) => (
+                <ArticleCard key={article.slug} meta={article} />
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="border border-border rounded-xl p-12 text-center"
+            >
+              <p className="text-text-tertiary text-lg font-mono">
+                Coming soon.
+              </p>
+            </motion.div>
+          )}
         </div>
       </main>
       <Footer />
